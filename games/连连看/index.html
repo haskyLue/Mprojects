@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+	<style>
+			.wrapper {
+				padding:0;
+				width:25%;
+				display:inline-block;
+				height:auto;
+				margin-left:20px;
+			}
+			._top {
+				width:260px;
+			}
+			#txt {
+				font:sans-serif;
+				font-weight:bold;
+				font-size:15px;
+				text-align:center;
+				display:inline-block;
+			}
+			#clock {
+				margin-left:15px
+			}
+			form {
+				display:inline;sad
+				margin-right:10px
+			}
+			#msg {
+				display:block;
+				margin-top:10px;
+				padding:5px;
+			}
+			table {
+				border-collapse:collapse;
+				margin:0;
+			}
+			td {
+				height:50px;
+				width:50px;
+				padding:0;
+				text-align:center;
+			}
+			#matrix {
+				padding:0;
+				float:right;
+				margin-right:30%;
+				position:relative;
+			}
+			.paths {
+				background-color:grey;
+				margin:0;
+				position:absolute;
+				display:none;
+			}
+			#path {
+				position:absolute;
+				padding:0;
+			}
+		</style>
+</head>
+<body style="position:relative">
+	<div class="wrapper">
+		<h4>连连看小游戏</h4>
+		<div class="_top">
+			<form action="">
+				<select name="col" id="col" value="5">
+					<option value="6">4</option>
+					<option value="7">5</option>
+					<option value="8">6</option>
+				</select>
+				<select name="row" id="row" value="5">
+					<option value="6">4</option>
+					<option value="7">5</option>
+					<option value="8">6</option>
+				</select>
+				<span></span>
+			</form>
+			<button id="button" onclick="seajs.use('./js/create',function(tmps){tmps.init_table();})">create</button>
+			<span id="clock"></span>
+		</div>
+		<textarea name="Here are some info." id="msg" cols="30" rows="10"></textarea>
+		<span id="txt">
+			Copyright&nbsp&copy;&nbsp2013&nbsp
+			<a href="mailto:ldb199224@163.com">ldb199224@163.com</a>
+		</span>
+	</div>
+	<div id="matrix"></div>
+	<div id="path"></div>
+</body>
+
+</html>
+<script type="text/javascript" src="../libs/sea.js"></script>
