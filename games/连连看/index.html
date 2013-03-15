@@ -2,22 +2,29 @@
 <html>
 <head>
 	<style>
+			.wrapall{
+				max-height:700px;
+				width: 100%;
+				overflow: hidden; 
+			}
 			.wrapper {
 				padding:0;
 				width:25%;
-				display:inline-block;
-				height:auto;
+				float: left;
+				height:400px;
 				margin-left:20px;
+				border-right: thin solid #111;
+				overflow: hidden;
 			}
 			._top {
 				width:260px;
 			}
 			#txt {
-				font:sans-serif;
-				font-weight:bold;
-				font-size:15px;
-				text-align:center;
+				font-size:13px;
+				text-align:left;
 				display:inline-block;
+				word-spacing: 1em;
+				margin-top: 15px
 			}
 			#clock {
 				margin-left:15px
@@ -30,6 +37,8 @@
 				display:block;
 				margin-top:10px;
 				padding:5px;
+				color: red
+				
 			}
 			table {
 				border-collapse:collapse;
@@ -43,7 +52,7 @@
 			}
 			#matrix {
 				padding:0;
-				float:right;
+				float:left;
 				margin-right:30%;
 				position:relative;
 			}
@@ -60,33 +69,34 @@
 		</style>
 </head>
 <body style="position:relative">
-	<div class="wrapper">
-		<h4>连连看小游戏</h4>
-		<div class="_top">
-			<form action="">
-				<select name="col" id="col" value="5">
-					<option value="6">4</option>
-					<option value="7">5</option>
-					<option value="8">6</option>
-				</select>
-				<select name="row" id="row" value="5">
-					<option value="6">4</option>
-					<option value="7">5</option>
-					<option value="8">6</option>
-				</select>
-				<span></span>
-			</form>
-			<button id="button" onclick="seajs.use('./js/create',function(tmps){tmps.init_table();})">create</button>
-			<span id="clock"></span>
+	<div class="wrapall">
+		<div class="wrapper">
+			<h4>连连看小游戏</h4>
+			<div class="_top">
+				<form action="">
+					<select name="col" id="col" value="5">
+						<option value="6">4</option>
+						<option value="7">5</option>
+						<option value="8">6</option>
+					</select>
+					<select name="row" id="row" value="5">
+						<option value="6">4</option>
+						<option value="7">5</option>
+						<option value="8">6</option>
+					</select>
+					<span></span>
+				</form>
+				<button id="button" onclick="seajs.use('./js/create',function(tmps){tmps.init_table();})">create</button>
+				<span id="clock"></span>
+			</div>
+			<textarea name="Here are some info." id="msg" cols="30" rows="10"></textarea>
+			<span id="txt">					
+				<cite>JavsScript*连连看 2013.2 <br>Copyright &copy; <a href="mailto:ldb199224@163.com">ldb199224@163.com</a><br>作者: ludebing </cite>
+			</span>
 		</div>
-		<textarea name="Here are some info." id="msg" cols="30" rows="10"></textarea>
-		<span id="txt">
-			Copyright&nbsp&copy;&nbsp2013&nbsp
-			<a href="mailto:ldb199224@163.com">ldb199224@163.com</a>
-		</span>
+		<div id="matrix"></div>
+		<div id="path"></div>
 	</div>
-	<div id="matrix"></div>
-	<div id="path"></div>
 </body>
 
 </html>
