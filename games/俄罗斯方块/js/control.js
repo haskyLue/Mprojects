@@ -16,7 +16,7 @@ function init() {
 	}
 	
 	/*显示 预览下一个方块 的区域*/
-	showPre(create_pre)
+	showPre(create_pre);
 	
 	/*主启动程序*/
 	if (checkGameOver()) {
@@ -181,7 +181,7 @@ function checkRotate() {
 			return false
 		else {
 			for (var j = 0; j < board.length; j++) {
-				if (isArrayEqual(board[j], [create.nowStat[i][0] + 1, create.nowStat[i][1]]))
+				if (isArrayEqual(board[j], [tmp[i][0] , tmp[i][1]]))
 					return false
 			}
 		}

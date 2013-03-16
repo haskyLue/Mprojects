@@ -32,8 +32,8 @@
 		clearoutline : function() {
 			var td = document.getElementsByTagName("td");
 			for (var i = 0; i < td.length; i++) {
-				if (td[i].style.border)
-					td[i].style.border = "";
+				if (td[i].style.backgroundColor)
+					td[i].style.backgroundColor = "";
 			}
 		},
 		showmsg : function() {
@@ -78,14 +78,14 @@
 				this.s_point[0] = e.id;
 				this.point[0] = this.getObject(e.id);
 				//p1
-				e.style.border = "#555 thin solid";
+				e.style.backgroundColor = "#555";
 				// console.log(event.target)
 			} else if (this.point[1] == null) {
 				this.s_point[1] = e.id;
 				this.point[1] = this.getObject(e.id)//p2
 
 				this.ifclear = getpath.judge(this.point[0], this.point[1]);
-				e.style.border = "#555 thin solid";
+				e.style.backgroundColor = "#555";
 				this.point = [null, null];
 
 				this.showmsg();
