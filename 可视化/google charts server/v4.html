@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>google chart api----Table</title>
+		<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+		<script src="common.js"></script>
+		<script type='text/javascript'>
+			getdatas();
+			google.load('visualization', '1', {
+				packages : ['table']
+			});
+			google.setOnLoadCallback(drawTable);
+
+			function drawTable() {
+				var data = new google.visualization.DataTable();
+				data.addColumn('date', '时间');
+				data.addColumn('number', '开销/元');
+				data.addColumn('string', '消费地点');
+				data.addRows(datas);
+				var formatter = new google.visualization.BarFormat({
+					width : 50
+				});
+				formatter.format(data, 1);
+
+				var table = new google.visualization.Table(document.getElementById('table'));
+				table.draw(data, {
+					width : "900px",
+					allowHtml : true
+				});
+			}
+		</script>
+		<style>
+			table {
+				margin: 0 auto;
+				text-align: center
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id='table' style="margin-left: 5%;"></div>
+	</body>
+</html>

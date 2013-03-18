@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>google chart api----Annotated Time Line</title>
+		<script type='text/javascript' src='http://www.google.com/jsapi'></script>
+		<script src="common.js"></script>
+		<script>
+			getdatas();
+			google.load('visualization', '1', {
+				'packages' : ['annotatedtimeline']
+			});
+			google.setOnLoadCallback(drawChart);
+
+			function drawChart() {
+				var data = new google.visualization.DataTable(datas);
+				data.addColumn('date', '时间');
+				data.addColumn('number', '开支');
+				data.addRows(ATL_filter(datas));
+				var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('show'));
+				chart.draw(data, {
+					allValuesSuffix : " RMB",
+					colors : ["blue"]
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div style="text-align:center;margin:5px">
+			某同学大学三年开销情况
+		</div>
+		<div id="show" style="width:900px;height:500px;over-flow:auto;margin:0 auto"></div>
+	</body>
+</html>

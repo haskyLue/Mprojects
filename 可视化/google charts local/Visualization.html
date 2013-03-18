@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="common.js"></script>
+	<script src="visual.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.wrapper{
+			margin-top: 10px;
+			margin-left:10px;
+		}
+		button{
+			padding: 5px;
+			margin: 3px;
+		}
+		
+		.visualization{
+			/*display: inline-block;*/
+			/*float: left;*/
+			width: 900px; 
+			height:500px;
+			margin: 0 auto 
+		}
+	</style>
+</head>
+<body>
+<div class="wrapper" style="position:relative">
+	<textarea name="" id="input" cols="100" rows="30" style="display:block;margin-bottom:10px"></textarea>
+	<button id="inits" onclick="Data_init()">paste above,click here</button>
+	<button class="visual-1" onclick="ATL()">ATL</button>
+	<button class="visual-2" onclick="Buble()">Buble</button>
+	<button class="visual-3" onclick="Pie()">Pie</button>
+	<button class="visual-4" onclick="Table()">Table</button>
+	<span class="msg" style="font-size:10px;margin-left:5px"><cite>JavsScript*数据可视化 2013.3/Copyright &copy; ldb199224@163.com</cite></span>
+</div>
+
+	<div class="visualization" id="visual-1"></div>
+	<div class="visualization" id="visual-2"></div>
+	<div class="visualization" id="visual-3"></div>
+	<div class="visualization" id="visual-4"></div>
+
+</body>
+<script>
+	function Data_init (argument) {
+		var target=document.getElementById("input").value,
+			wrap=document.getElementsByClassName("visualization")[0];
+			datas=filterDatas(target.split(/\n/));
+			document.getElementById("input").style.display='none';
+			document.getElementById("inits").style.display='none';
+			
+	}
+	function hidediv(e){
+		var tmp=e.getAttribute("class").split("-")[1];
+		switch(tmp) {
+			case "1":
+				document.getElementById("visual-1").style.display="block";
+				document.getElementById("visual-2").style.display="none";
+				document.getElementById("visual-3").style.display="none";
+				document.getElementById("visual-4").style.display="none";				
+		        break;
+			case "2":
+				document.getElementById("visual-2").style.display="block";
+				document.getElementById("visual-1").style.display="none";
+				document.getElementById("visual-3").style.display="none";
+				document.getElementById("visual-4").style.display="none";		        
+		        break;
+		    case "3":
+				document.getElementById("visual-3").style.display="block";
+				document.getElementById("visual-1").style.display="none";
+				document.getElementById("visual-2").style.display="none";
+				document.getElementById("visual-4").style.display="none";		        
+		        break;
+		    case "4":
+				document.getElementById("visual-4").style.display="block";
+				document.getElementById("visual-1").style.display="none";
+				document.getElementById("visual-3").style.display="none";
+				document.getElementById("visual-2").style.display="none";		        
+		        break;
+		}
+	}
+</script>
+</html>
