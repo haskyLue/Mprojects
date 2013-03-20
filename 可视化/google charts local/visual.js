@@ -3,70 +3,85 @@ google.load('visualization', '1', {
 });
 // google.setOnLoadCallback(drawChart);
 
-function ATL(e) {
+function ATL(event) {
+	var tmp=document.getElementById('visual-1');
+	hidediv(event.target);//显示当前div，隐藏其他
+	if(tmp.innerHTML=="")
+	{
+		var data = new google.visualization.DataTable(datas);
+		data.addColumn('date', "Date");
+		data.addColumn('number', 'Expenses');
+		data.addRows(ATL_filter(datas));
+		var chart = new google.visualization.AnnotatedTimeLine(tmp);
+		chart.draw(data, {
+			allValuesSuffix: " RMB",
+			colors: ["blue"],
+			title: 'Someone\'s consumption in recent years'
+		});
+	}
+}
+function Buble(event) {
+	var tmp=document.getElementById('visual-2');
 	hidediv(event.target);
-	var data = new google.visualization.DataTable(datas);
-	data.addColumn('date', '时间');
-	data.addColumn('number', '开支');
-	data.addRows(ATL_filter(datas));
-	var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('visual-1'));
-	chart.draw(data, {
-		allValuesSuffix: " RMB",
-		colors: ["blue"]
-	});
+	if(tmp.innerHTML=="")
+	{
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'ID');
+		data.addColumn('number', 'Months');
+		data.addColumn('number', 'Time');
+		data.addColumn('string', 'Place');
+		data.addColumn('number', 'Expenses');
+		data.addRows(BC(datas));
+	
+		var options = {
+			title: 'Someone\'s consumption in recent years',
+			hAxis: {
+				title: 'Months'
+			},
+			vAxis: {
+				title: "Time"
+			}
+		};
+		var chart = new google.visualization.BubbleChart(tmp);
+		chart.draw(data, options);
+	}
 }
-function Buble(e) {
-	hidediv(event.target)
-	var data = new google.visualization.DataTable();
-	data.addColumn('string', 'ID');
-	data.addColumn('number', '月份');
-	data.addColumn('number', '当天消费时刻');
-	data.addColumn('string', '消费地点');
-	data.addColumn('number', '花费开支');
-	data.addRows(BC(datas));
-
-	var options = {
-		title: '某人n年消费情况',
-		hAxis: {
-			title: '月份'
-		},
-		vAxis: {
-			title: '时刻'
-		}
-	};
-
-	var chart = new google.visualization.BubbleChart(document.getElementById('visual-2'));
-	chart.draw(data, options);
-}
-function Pie(e) {
+function Pie(event) {
+	var tmp=document.getElementById('visual-3')
 	hidediv(event.target);
-	var data = new google.visualization.DataTable();
-	data.addColumn('string', '消费地点');
-	data.addColumn('number', '同一地点的消费次数');
-	data.addRows(PieChart_filter(datas));
-	var options = {
-		'title': '某人几年的消费情况'
-		// 'width': 1000,
-		// 'height': 700
-	};
-	var chart = new google.visualization.PieChart(document.getElementById('visual-3'));
-	chart.draw(data, options);
+	if(tmp.innerHTML=="")
+	{
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Place');
+		data.addColumn('number', 'Consumption times');
+		data.addRows(PieChart_filter(datas));
+		var options = {
+			'title': 'Someone\'s consumption in recent years'
+		};
+		var chart = new google.visualization.PieChart(tmp);
+		chart.draw(data, options);
+	}
 }
-function Table(e) {
-	hidediv(event.target)
-	var data = new google.visualization.DataTable();
-	data.addColumn('date', '时间');
-	data.addColumn('number', '开销/元');
-	data.addColumn('string', '消费地点');
-	data.addRows(datas);
-	var formatter = new google.visualization.BarFormat({
-		width: 50
-	});
-	formatter.format(data, 1);
-
-	var table = new google.visualization.Table(document.getElementById('visual-4'));
-	table.draw(data, {
-		width: "900px",
-		allowHtml: true
-	});
+function Table(event) {
+	var tmp=document.getElementById('visual-4')
+	hidediv(event.target);
+	if(tmp.innerHTML=="")
+	{
+		var data = new google.visualization.DataTable();
+		data.addColumn('date', 'Time');
+		data.addColumn('number', 'Expenses/yuan');
+		data.addColumn('string', 'Place');
+		data.addRows(datas);
+		var formatter = new google.visualization.BarFormat({
+			width: 50
+		});
+		formatter.format(data, 1);
+	
+		var table = new google.visualization.Table(tmp);
+		table.draw(data, {
+			width: "900px",
+			allowHtml: true,
+			title: 'Someone\'s consumption in recent years'
+		});
+	}
 }

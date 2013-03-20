@@ -13,29 +13,24 @@
 			margin-top: 10px;
 			margin-left:10px;
 		}
-		button{
-			padding: 5px;
-			margin: 3px;
-		}
 		
 		.visualization{
 			/*display: inline-block;*/
 			/*float: left;*/
 			width: 900px; 
 			height:500px;
-			margin: 0 auto 
+			margin:10px auto;
 		}
 	</style>
 </head>
 <body>
-<div class="wrapper" style="position:relative">
-	<textarea name="" id="input" cols="100" rows="30" style="display:block;margin-bottom:10px"></textarea>
+<div class="wrapper" style="position:relative;margin-left:25%">
+	<textarea name="" id="input" cols="100" rows="30" style="display:block;margin-bottom:10px;"></textarea>
 	<button id="inits" onclick="Data_init()">paste above,click here</button>
-	<button class="visual-1" onclick="ATL()">ATL</button>
-	<button class="visual-2" onclick="Buble()">Buble</button>
-	<button class="visual-3" onclick="Pie()">Pie</button>
-	<button class="visual-4" onclick="Table()">Table</button>
-	<span class="msg" style="font-size:10px;margin-left:5px"><cite>JavsScript*数据可视化 2013.3/Copyright &copy; ldb199224@163.com</cite></span>
+	<button class="visual-1" onclick="ATL(event)">ATL</button>
+	<button class="visual-2" onclick="Buble(event)">Buble</button>
+	<button class="visual-3" onclick="Pie(event)">Pie</button>
+	<button class="visual-4" onclick="Table(event)">Table</button>
 </div>
 
 	<div class="visualization" id="visual-1"></div>

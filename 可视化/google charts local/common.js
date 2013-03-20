@@ -12,17 +12,17 @@ function filterDatas(data) {
 	return item
 }//array filter
 
-function getdatas() {
-	var xmlhttp = new XMLHttpRequest(), text, targets = document.getElementById("show");
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			datas = xmlhttp.responseText.split(/\n/);
-			datas = filterDatas(datas)
-		}
-	}
-	xmlhttp.open("GET", "B10040628.csv", false);
-	xmlhttp.send();
-}
+// function getdatas() {
+// 	var xmlhttp = new XMLHttpRequest(), text, targets = document.getElementById("show");
+// 	xmlhttp.onreadystatechange = function() {
+// 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+// 			datas = xmlhttp.responseText.split(/\n/);
+// 			datas = filterDatas(datas)
+// 		}
+// 	}
+// 	xmlhttp.open("GET", "B10040628.csv", false);
+// 	xmlhttp.send();
+// }
 
 /***************************************************/
 //for PieChart
