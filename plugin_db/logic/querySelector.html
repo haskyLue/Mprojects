@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>querySelector</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+    div{
+    	height: 100px;
+    	width: 100px;
+    	background-color: greenyellow;
+    	position: relative;
+    	margin: 30px;
+    	float: left;
+    }
+    .c{
+    	width: 300px;
+    	height: 300px;
+    	background-color: green;
+    }
+    </style>
+  </head>
+  <body>
+  <input value="getA" type="button" onclick="$('#a')">
+  <input value="getB" type="button" onclick="$('.b')">
+  <input value="getCD" type="button" onclick="$('.c .d')">
+  <input value="getCE" type="button" onclick="$('.c #e')">
+    <div id="a"> id=a</div>
+    <div class="b">class=b</div>
+    <div class="b">class=b</div>
+    <div class="b">class=b</div>
+    <div class="c">
+    	<div class="d">class=c class=d</div>
+    	<div id="e">class=c id=e</div>
+	</div>
+  </body>
+  <script type="text/javascript">
+  function $(str){
+  	var list=document.querySelectorAll(str);
+	alert("获得"+list.length+"个dom");
+  }
+  </script>
+</html>

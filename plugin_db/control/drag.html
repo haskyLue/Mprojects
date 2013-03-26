@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  
+  <body>
+    <div id="d" style="height: 100px;width: 100px;background-color: greenyellow;position: absolute;left:0px;top:0px;"  ></div>
+  </body>
+  <script type="text/javascript">
+  //over move out
+  //wheel
+  //down up click
+  d.sld=false;
+  d.onmousedown=function(e){
+  	if(e.which==1){
+  		this.sld=true;
+  		this.x=e.x;
+  		this.y=e.y;
+  		this.innerHTML=this.sld;
+  	}
+  };
+  d.onmouseup=function(e){
+  	if(e.which==1){
+  		this.sld=false;
+  		this.innerHTML=this.sld;
+  	}
+  };
+  d.onmouseout=function(e){
+  	if(this.sld){
+  		//nl-l=nx-x
+  		this.style.left=eval(this.style.left.split("px")[0])+e.x-this.x+"px";
+  		//this.style.top=eval(this.style.top.split("px")[0])+e.y-this.y+"px";
+  		this.x=e.x;
+  		this.y=e.y;
+  		this.innerHTML=e.x+"<br>"+e.y;
+  	}
+  };
+  document.onmousemove=function(e){
+  	if(d.sld){
+  		//nl-l=nx-x
+  		d.style.left=eval(d.style.left.split("px")[0])+e.x-d.x+"px";
+  		d.style.top=eval(d.style.top.split("px")[0])+e.y-d.y+"px";
+  		d.x=e.x;
+  		d.y=e.y;
+  		d.innerHTML=d.sld;
+  	}
+  };
+  </script>
+</html>

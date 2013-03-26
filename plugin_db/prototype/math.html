@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+  a:<input value="1.2345" id="a"><br>
+  b:<input value="7.8901" id="b"><br>
+  c:<input value="" id="c"><br>
+  小数位:<input value="2" id="d"><br>
+  <br>
+  <input value="a加b" type="button" onclick="c.value=eval(a.value).add(b.value,d.value)">
+  <input value="a减b" type="button" onclick="c.value=eval(a.value).sub(b.value,d.value)">
+  <input value="a乘b" type="button" onclick="c.value=eval(a.value).mul(b.value,d.value)">
+  <input value="a除b" type="button" onclick="c.value=eval(a.value).dev(b.value,d.value)">
+  <input value="a舍位" type="button" onclick="c.value=eval(a.value).point(d.value)">
+  </body>
+  <script type="text/javascript">
+Number.prototype.point = function(point){//去位
+	point=Math.pow(10,point);
+	return Math.floor(this*point)/point;
+};
+Number.prototype.add = function(second,point){//加法
+	var rs=this+eval(second);
+	if(!!point){
+		point=Math.pow(10,point);
+		rs=Math.floor(rs*point)/point;
+	}
+	return rs;
+};
+Number.prototype.sub = function(second,point){//减法
+	var rs=this-second;
+	if(!!point){
+		point=Math.pow(10,point);
+		rs=Math.floor(rs*point)/point;
+	}
+	return rs;
+};
+Number.prototype.mul = function(second,point){//乘法
+	var rs=this*second;
+	if(!!point){
+		point=Math.pow(10,point);
+		rs=Math.floor(rs*point)/point;
+	}
+	return rs;
+};
+Number.prototype.dev = function(second,point){//除法
+	var rs=this/second;
+	if(!!point){
+		point=Math.pow(10,point);
+		rs=Math.floor(rs*point)/point;
+	}
+	return rs;
+};
+  </script>
+</html>

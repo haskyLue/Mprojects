@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>querySelector</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+  <div id="d"></div>
+  <input value="双击我" id="a" ondblclick="d.show({dom:a})"/>
+  </body>
+  <script type="text/javascript">
+  /**
+ * v1.2.0.0
+ * 
+ * selectTab.init(dom,data,option)
+ * 		dom				<===>	HTML'DOM
+ * 		data			<===>	[{name,children:[{rid,code,name},{}]},{}]
+ * 		option			<===>	{title:未命名,multiple:false,lwidth:150,rwidth:150,height:200,submit:function(selectedData,srcDom,mouseEvent)}
+ * 																											selectedData	<===>	[{},{}]
+ * 
+ * dom.show({title,dom,multiple})
+ * 		title			<===>	改变显示的标题
+ * 		dom				<===>	点击确认的时候，调用的方法传递的控件参数
+ * 		multiple		<===>	改变是否多选
+ * dom.hide()
+ * dom.destroy()
+ */
+var selectTab={
+	init:function(dom,data,option){
+		/*********************参数修正*********************/
+		if(!dom)
+			return;
+		if(data==null||data==undefined)
+			data=[];
+		if(!option)
+			option={};
+		var title='未命名';
+		if(option.title)
+			title=option.title;
+		var multiple=false;
+		if(option.multiple)
+			multiple=true;
+		var srcDom=null;
+		var lwidth=150;
+		if(option.lwidth)
+			lwidth=option.lwidth;
+		var rwidth=150;
+		if(option.rwidth)
+			rwidth=option.rwidth;
+		var width=lwidth+rwidth;
+		var height=200;
+		if(option.height)
+			height=option.height;
+		/*********************构建DOM*********************/
+		dom.style.backgroundColor="rgba(121, 121, 121, 0.57)";
+		dom.style.position="absolute";
+		dom.style.left="0";
+		dom.style.top="0";
+		dom.style.width="100%";
+		dom.style.height="100%";
+		var childMarginLR=(dom.clientWidth-width)/2;
+		var childMarginTB=(dom.clientHeight-height)/2;
+		dom.style.display="none";
+		var dvAll=document.createElement("div");
+		dom.appendChild(dvAll);
+		dvAll.style.marginLeft=childMarginLR+"px";
+		dvAll.style.marginTop=childMarginTB+"px";
+		dvAll.style.width=width+"px";
+		dvAll.style.height=height+"px";
+		dvAll.style.border="2px solid #00B7DA";
+		dvAll.style.borderRadius="5px";
+		dvAll.style.backgroundColor="#f8f8f8";
+		dvAll.innerHTML=
+				'<div style="width:'+width+'px;height:15px;padding:5px 0 0 5px"><span>'+title+'</span><a href="javascript:void(0)" style="float: right;margin-right: 15px;line-height: 15px;font-size: xx-small;color:blue">确认</a></div>'
+			  	+'<div style="float:left;overflow:auto;width:'+(lwidth-10)+'px;height:'+(height-30)+'px;margin:5px;background-color:white;"><ul style="margin:0px;padding:0px;"></ul></div>'
+			  	+'<div style="float:left;overflow:auto;width:'+(rwidth-10)+'px;height:'+(height-30)+'px;margin:5px;background-color:white;"><ul style="margin:0px;padding:0px;"></ul></div>';
+		dom.show=function(newOption){
+			if(newOption){
+				if(newOption.title)
+					dvAll.children[0].children[0].innerHTML=newOption.title;
+				if(newOption.dom)
+					srcDom=newOption.dom;
+				if(newOption.multiple)
+					multiple=newOption.multiple;
+			}
+			dom.style.display="block";
+		};
+		dom.hide=function(){
+			exit();
+		};
+		dom.destroy=function(){
+			document.body.removeChild(dvAll);
+			dom=null;
+		};
+		dom.onclick=function(e){
+			if(e.srcElement.style.height=="100%")
+				exit();
+		};
+		/*********************定义内部调用变量*********************/
+		var ulClass=dvAll.children[1].children[0];
+		var ulItem=dvAll.children[2].children[0];
+		var beforeSelectClass;
+		var beforeSelectItem;
+		/*********************填充数据*********************/
+		for(var c=0;c<data.length;c++){
+			var liClass=document.createElement("li");
+			liClass.innerHTML=data[c].name;
+			liClass.index=c;
+			liClass.style.whiteSpace="nowrap";
+			liClass.onmouseover=liOnMouseOver;
+			liClass.onmouseout=liOnMouseOut;
+			liClass.selected=false;
+			liClass.onclick=function(){
+				if(beforeSelectClass){
+					beforeSelectClass.selected=false;
+					beforeSelectClass.style.backgroundColor=null;
+				}
+				beforeSelectClass=this;
+				this.selected=true;
+				this.style.backgroundColor="#21eccc";
+				ulItem.innerHTML="";
+				var lis=data[this.index].children;
+				for(var i=0;i<lis.length;i++){
+					var liItem=document.createElement("li");
+					liItem.innerHTML="<input type='checkbox'>"+lis[i].name+"("+lis[i].code+")";
+					liItem.style.whiteSpace="nowrap";
+					liItem.onmouseover=liOnMouseOver;
+					liItem.onmouseout=liOnMouseOut;
+					liItem.stRid=lis[i].rid;
+					liItem.stCode=lis[i].code;
+					liItem.stName=lis[i].name;
+					liItem.onclick=function(e){
+						if(e.srcElement.nodeName=="LI")
+							this.children[0].checked=!this.children[0].checked;
+						if(!multiple&&beforeSelectItem!=this){
+							if(beforeSelectItem)
+								beforeSelectItem.children[0].checked=false;
+							beforeSelectItem=this;
+						}
+					};
+					ulItem.appendChild(liItem);
+				}
+			};
+			ulClass.appendChild(liClass);
+		}
+		dom.children[0].children[0].children[1].onclick=function(e){
+			var index=0;
+			var selectItems=[];
+			for(var i=0;i<ulItem.children.length;i++)
+				if(ulItem.children[i].children[0].checked)
+					selectItems[index++]={'rid':ulItem.children[i].stRid,'code':ulItem.children[i].stCode,'name':ulItem.children[i].stName};
+			if(option.submit)
+				option.submit(selectItems,srcDom,e);
+			exit();
+		};
+		/*********************公共函数*********************/
+		function liOnMouseOver(){
+			if(!this.selected){
+				this.backgroundColor=this.style.backgroundColor;
+				this.style.backgroundColor="#CFEC34";
+			}
+		}
+		function liOnMouseOut(){
+			if(!this.selected){
+				this.style.backgroundColor=this.backgroundColor;
+				this.backgroundColor=null;
+			}
+		}
+		function exit(){
+			dom.style.display="none";
+			for(var i=0;i<ulClass.children.length;i++)
+				ulClass.children[i].style.backgroundColor=null;
+			ulItem.innerHTML="";
+		}
+		/*********************尾处理*********************/
+		dom.style.display="none";
+	}
+};
+  selectTab.init(d
+  	,[
+  		{'name':'工艺部',children:[
+  			{'rid':'1','code':'100004','name':'老六'},
+  			]},
+  		{'name':'设计部',children:[
+	  		{'rid':'2','code':'100001','name':'张三'}
+	  		,{'rid':'3','code':'100005','name':'周七'},
+	  		]},
+  		{'name':'生产部',children:[
+  			{'rid':'4','code':'100002','name':'李四'},
+  			{'rid':'5','code':'100003','name':'王五'},
+  			]}
+  		]
+  	,{
+  		submit:function(selectedData,srcDom){
+  			srcDom.value=selectedData[0].name;
+  		}
+  	}
+  );
+  </script>
+</html>
