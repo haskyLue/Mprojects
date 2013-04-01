@@ -1,0 +1,107 @@
+/*
+一些整理(ecamscript 5 method ie8不支持)
+1.	var p=new String("wocao");q="wocao";
+	q==p正确,p===q错误
+2.	存在的 非空 字符串:
+	if((typeof tmp!="undefined")&&(typeof tmp.valueOf()=="String")&&(tmp.length!=0)){...}
+3.	exec index匹配的索引 ;input输入的字符串 ;[0]获取的匹配的结果 ;[1],[2]带圆括号的字符串匹配...
+	replace $n第n次捕获的圆括号的值
+4.	slice 复制数组的部分元素序列创建新的数组 start end
+	args=Array.prototype.slice.call(arguments) 将参数组转化成数组  
+5.	indexOf lastIndexOf	
+	splice 删除元素；起始(负数，从数组末尾拼接) 数目 替换的元素
+
+	foreach(ele,index,array)修改源数组
+	map(ele,index,array)返回新的数组，必须返回一个值
+	filter(ele,index,array)返回布尔值
+
+	every(ele,index,array)检测符合给定条件的每个元素/只要有元素返回false,
+	some(ele,index,array)检测直到元素返回true
+6.	创建关联数组用Object O[key]=value192
+7.	闭包		外围函数返回内部函数,局部函数（curry）
+			给内部函数赋值一个全局变量
+8.缓存计算(memoization)	
+	var memos=(function(){
+		var memo=[0,1];
+		var fib=function(n){
+			var result=memo[n];
+			if(typeof result !="number"){
+				result=fib(n-1)+fib(n-2)
+				memo[n]=result;
+			}
+			return result;
+		};
+		return fib;
+	})()
+
+	function fib(){
+		return n<2?n:fib(n-1)+fib(n-2)
+	}
+9.	ie8及以前版本中通过WINDOW对象访问event对象；
+	在火狐,chrome,opera,safari中，将event对象作为处理事件程序的一个参数
+10.	window.screen.width屏幕宽度
+	window.screen.availWidth浏览器宽度
+11.	表单: formValue=document.forms["name"].elements["ele"] ||document.getElementById("ele")
+12.	渐进增强
+13.	nodelist唯一的属性length,唯一的方法item(n)
+14.	ie8不支持getElementsByTagName,getElementsByClassName
+		支持Selector API
+15.	Selector API
+	docuement.querySelectorAll(),docuement.querySelector()
+16. 命名空间
+	选择器	getElementByTagNameNS("namespace",ele)
+	css3	@namespace q "..."
+			q|ele{
+				...
+			}
+	querySelector 不支持
+17.为了使ie8及以前的浏览器能样式化html5标签，需要应用一个垫片，document.createElement，只需创建即可识别，无需赋值插入；
+	或者加入html5库，html5.js 
+	＜!–[if IE]>
+	＜script src=”http://html5shiv.googlecode.com/svn/trunk/html5.js”>＜/script>
+	＜![endif]–>
+18.	cloneNode(true)
+19.	ria http://zh.wikipedia.org/wiki/RIA
+20. svg文件中添加js，<![CDATA[...]]
+
+21.	getter,setter	提供对私有数据成员想属性一样的访问
+	apply,call
+	Object.defineProperty(object, propertyname, descriptor)
+	Object.defineProperty(object, {propertyname:de\
+	\\scriptor,...})
+		属性描述符对象descriptor	{value:"val",writable:true,configurable:true,enumerable:true}
+			value:属性的值
+			writable:如果为false，属性的值就不能被重写。
+			get: 一旦目标属性被访问就会调回此方法，并将此方法的运算结果返回用户。
+			set:一旦目标属性被赋值，就会调回此方法。
+			configurable:如果为false，则任何尝试删除目标属性或修改属性以下特性（writable, configurable, enumerable）的行为将被无效化。
+			enumerable:是否能在for...in循环中遍历出来或在Object.keys中列举出来。
+		Object.getOwnPropertyDescriptior(obj,prop)
+22.	良好的库不会使用DOM LEVEL0事件(onload)
+	使用对象直接量命名空间
+	不引入全局变量
+	与其他库配合的库，提供事件钩子。行为良好的库不应通过prototype属性来扩展已有对象
+23.	ajax
+		获取数据后	
+			get encodeURIComponent(str)
+			post str=encodeURIComponent(str);str.replace(/%20/g,"+")   //将空格编码为+
+
+			new xmlhttprequest open(get,url,true) onreadystatchange send() 
+		解决跨域问题
+			创建一个服务器端的代理程序用来代理调用其他服务的api，并返回客户端，在ajax中调用；
+			jsonp(ajax的核心是通过XmlHttpRequest获取非本页内容，而jsonp的核心则是动态添加<script>标签来调用服务器提供的js脚本。)
+				var url = "http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&format=json&callback=fuctionName";
+       			var script = document.createElement('script');
+    			script.setAttribute('src', url);
+    			document.getElementsByTagName('head')[0].appendChild(script); 
+	json 解析
+		oobj=eval("("+sobj+")") sobj不能包含方法;
+		安全性问题	引入json2.js JSON.parse(sobj)
+				JSON.parse(sobj,function(key,value){})//返回值为null undefined，删除成员
+				JSON.stringify(oobj [, replacer] [, space]) //arg[1]数组，则遍历原json中在该数组存在名称/值，并返回该名称/值
+24.	[object Object]
+	ecma规范要求toString 方法返回[object class]
+	不过大多数内部类覆盖了toString方法，所以只有自定义对象的会返回[object object]
+	客户端内建的对象一般class都是为Object(大写）
+	虽然很多类覆盖了toString方法，但是你可以用Object.prototype.toString.apply() 显示调用object.toString
+		*/
