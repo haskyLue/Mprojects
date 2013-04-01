@@ -44,7 +44,7 @@
 			x=evt.clientX+offsetX;
 			y=evt.clientY+offsetY
 		}
-		return {x,y}
+		return [x,y]
 	}
 	function addlistener(target,type,handler){
 		if(target.addEventListener){
@@ -94,7 +94,7 @@
 			w=window.innerWidth;
 			h=window.innerHeight;
 		}
-		return {w,h}
+		return [w,h]
 	}
 	function eleRect(ele){
 		ele.getBoundingClientRect();//边界矩形，包含了矩形的top,bottom,right,left边界信息(以viewport顶部左边为参考点)，返回值包含padding,border
