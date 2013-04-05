@@ -2,4 +2,8 @@
 
 对于server	传至服务器浏览对应的html文件即可
 
+基于googleCharsAPI 写的一个jquery插件，用法简单，在头部加入<script src="http://www.google.com/jsapi"></script>
+	随意封装一个jquery对象，调用插件方法，并传入指定的参数，即可；
+	具体参考目录plugin_BaseOn_jQuery
+
 该数据为我同学从自己的校园卡消费账单上挖来的

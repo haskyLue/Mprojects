@@ -1,0 +1,22 @@
+该插件提供以下几个参数：
+	useGoogle:true,
+	useD3:false,	//以上默认即可
+	containerId:"containerVisiuals",	//必填，可视化的外围div容器
+	visiualType:"ColumnChart",	//必填，可视化的表现形式，即各种图形，名称为_basedLibs.googleCharsApi对象内的数组成员
+	datas:[],	//必填，二维数组，传入的数据
+	lables:[],	//必填，字符串，确保length与datas[i]的length一致；没有则设为空字符串
+	GVOptions:{}	//可选，googleCharts内置的可视化选项，每种表现形式的选项各有不同，具体https://developers.google.com/chart/
+
+关于datas
+	[["1992-2,4",12,1000],
+	["1995-7,4",20,1800],
+	["1999-9,2",10,1200]]
+关于lables
+	["年份","人数","价值"]
+
+
+更多关于可视化形式，可在下方google.load内添加，同时，在_basedLibs.googleCharsApi.other添加相应的内容
+
+
+D3以及其他可视化途径，后期逐步增加
+			
