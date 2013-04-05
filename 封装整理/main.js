@@ -13,6 +13,7 @@
 			}
 		}
 	})() //调整作用域
+
 function curry(fn, obj) {
 	var obj = obj || window;
 	var arg = [];
@@ -79,11 +80,11 @@ function cancelPropagation(event) {
 
 //样式
 
-function getStyle(ele, css_name, cssName) {
+function getStyle(ele, cssName, css_name) {
 	if (ele.currentStyle) {
-		return ele.currentStyle[css - name]
+		return ele.currentStyle[cssName]
 	} else if (document.defaultView && document.defaultView.getComputedStyle) {
-		return document.defaultView.getComputedStyle(ele, null).getPropertyValue(cssName)
+		return document.defaultView.getComputedStyle(ele, null).getPropertyValue(css_name)
 	} else {
 		return null
 	}

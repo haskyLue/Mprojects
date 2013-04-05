@@ -1,0 +1,26 @@
+{
+"name": "MyExtension",
+"manifest_version": 2,
+"version":"1.0",
+"description": "The first extension that I made.",
+"content_scripts": [
+		{
+			"matches": ["http://*/*", "https://*/*"],//必须。 定义哪些页面需要注入content script
+			"js": [ "js/jQuery-1.9.js","js/backtotop.js"],
+			"css": ["css/work.css"]
+		}
+  	],
+// "background": {
+// 		"scripts": ["js/jQuery-1.9.js","bg.js"]//后台单独的长时间运行的脚本
+// },
+"browser_action": {
+"default_icon": "icon.png",
+"name":"回到页首",
+"default_popup": "popup.html"//单击应用图标显示对话框
+},
+"web_accessible_resources": ["img/backtotop.PNG"],
+"content_security_policy": "script-src 'self' ; object-src 'self'",//是否允许引用外部js,默认情况Eval and related functions禁用；行内js禁用；Only local script and and object resources are loaded
+ "permissions": [
+    "tabs", "http://*/*"]   //指定可以访问的一个或者多个主机
+
+}

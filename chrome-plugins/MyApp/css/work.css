@@ -1,0 +1,10 @@
+/*backtotop*/
+.chrome_backtotop{
+	height: 45px;
+	position: fixed;
+	left: 1200px;
+	top: 500px;
+	width: 45px;
+	
+	z-index: 999
+}
