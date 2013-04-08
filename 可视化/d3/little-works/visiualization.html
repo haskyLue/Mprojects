@@ -1,0 +1,143 @@
+<!--created @ldb199224@163.com 2013.4.8-->
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<script src="d3.v3.min.js"></script>
+	<style>
+	body{
+		font-family: sans-serif;
+	}
+	svg{
+		margin:10px 35%
+	}
+	.axis path,.axis line,.axis text{
+    	fill: white;
+         
+	}
+	
+    </style>
+</head>
+<body></body>
+	<script>
+	var data = [
+		['赵',1992,92],['钱',1993,89],['孙', 1991,100],['李', 1989,60],['周', 1992,77]
+	];
+
+	var yScale = d3.scale.linear()
+		.domain([d3.min(data, function(d) { return d[2]; }), d3.max(data, function(d) { return d[2]; })])
+			.range([200, 300]);//初始域的映射器（线性）
+
+	var xScale = d3.scale.ordinal()
+		.domain(data.map(function(d) { return d[0]}))
+    		.rangeRoundBands([0, 300]);//初始域的映射器（单个元素到输出于的映射,比如 苹果，栗子到输出域的映射）
+
+
+	var svg = d3.select("body").append("svg").attr("width", 300).attr("height", 300);
+
+	var xAxis = d3.svg.axis()
+				.scale(xScale).orient("bottom");
+
+
+	svg.selectAll("rect")
+			   .data(data)
+			   .enter()
+			   .append("rect")//这里绘制绑定指标值数据的长方形
+			   .attr("x", function(d, i) {
+			   		return i * (300 / data.length);
+			   })
+			   .attr("y", 0)
+			   .attr("width", 300 / data.length-2)
+			   .attr("height", function(d) {
+			   		return yScale(d[2]);
+			   })//我们将每组指标值([1992, 1993, 1991, 1989, 1992],在[200,300]的值)--->长方形高度值
+			    .attr('fill',function(d){
+			   		return 'rgb(0,0,'+((d[1]-1989)*60)+')'
+			   })
+			   .on("mouseover", function(d){
+			   		console.log(arguments)
+			   		d3.select(this).style("opacity", .8);
+			   		SvgChange();
+			   		ShowMsg(d);
+			   		// console.log(d3.select(this).data()[0])
+			   	})
+			   .on("mouseout", function(){
+			   		d3.select(this).style("opacity", 1);
+			   		SvgChange()
+			   })
+			   
+
+	svg.selectAll("text")
+			   .data(data)
+			   .enter()
+			   .append("text")
+			   .text(function(d) {
+			   		return d[2]+'分';
+			   })///这里我们创建了数组data[0]的文字元素，并在下面的代码中调整相关属性（位置，字体，颜色等）
+			   .attr("text-anchor", "middle")
+			   .attr("x", function(d, i) {
+			   		return xScale(d[0])+(300 / data.length-2)/2;
+			   })
+			   .attr("y", 100)
+			   .attr("font-size", "10px")
+			   .attr("fill", "white")
+			   .transition()
+    				.delay(100)
+    				.duration(1000)
+			   .attr("y", 290)
+			   .attr("fill", "grey");
+			   
+
+	 svg.append("g")
+      .attr("class", "x axis")      
+      .call(xAxis);
+
+  
+function SvgChange() {
+	var tmpXscale = xScale.domain(data.sort(d3.event.type==='mouseout' ? function(a, b) {
+		return b[1] - a[1];//以data[1]的元素为比较基准，将data从大到小排序
+			} : function(a, b) {
+					return d3.ascending(a[2], b[2]);//以data[2]的元素为比较基准，将data从升序排列
+				}).map(function(d) {
+					return d[0];
+					}))
+	//定义排序后的xScale映射
+
+
+	var transition = svg.transition().duration(400),
+		delay = function(d, i) {
+			return i * 50;
+		};
+	//定义一个变换
+
+	transition.selectAll("svg rect")
+		.delay(delay)
+		.attr("x", function(d) {
+		return tmpXscale(d[0]);
+	});//rect
+	transition.selectAll("svg>text")
+		.delay(delay)
+		.attr("x", function(d,i) {
+		return tmpXscale(d[0])+(300 / data.length-2)/2;
+	});//text
+	transition.select(".x.axis")
+		.call(xAxis)
+		.selectAll("g")
+		.delay(delay);//x axis
+	//应用变换(调整x方向的位置)
+}
+function ShowMsg(data_){
+	var msgWrap=document.getElementById('msg');
+	if(msgWrap){
+		msgWrap.innerHTML='姓名:'+data_[0]+'<br/>生日:'+data_[1]+'<br/>得分:'+data_[2]	
+	}else{
+		msgWrap=document.createElement('p')
+		msgWrap.setAttribute('id','msg');
+		msgWrap.style['text-align']='center';
+		document.getElementsByTagName('body')[0].appendChild(msgWrap);
+		ShowMsg(data_)
+	}
+}
+			   
+</script>
+
+</html>

@@ -1,0 +1,426 @@
+{
+    "name": "南邮校科协", 
+    "info": "", 
+    "children": [
+        {
+            "name": "技术中心", 
+            "info": "", 
+            "children": [
+                {
+                    "name": "主席团", 
+                    "info": "", 
+                    "children": [
+                        {
+                            "name": "付培栋", 
+                            "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                        }, 
+                        {
+                            "name": "赵豪", 
+                            "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                        }
+                    ]
+                }, 
+                {
+                    "name": "计算机部", 
+                    "info": "", 
+                    "children": [
+                        {
+                            "name": "部长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "黄洵松", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "副部长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "倪鑫", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "江如意", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "罗璇", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "算法组组长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "沈竹筠", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "手机开发组组长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "俞志强", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "讲师", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "祁凯平", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "王楚南", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "操作系统组组长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "王国真", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    "name": "电子部", 
+                    "info": "", 
+                    "children": [
+                        {
+                            "name": "部长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "姜松", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "副部长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "高飞", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "梁爽", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "陈霖坤", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "组长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "姜炜", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "刘洋", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "陈迪", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "姜辉", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    "name": "网络部", 
+                    "info": "", 
+                    "children": [
+                        {
+                            "name": "部长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "刘波", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "副部长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "王志豪", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "李静", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }, 
+        {
+            "name": "办公中心", 
+            "info": "", 
+            "children": [
+                {
+                    "name": "主席团", 
+                    "info": "", 
+                    "children": [
+                        {
+                            "name": "秦小静", 
+                            "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                        }, 
+                        {
+                            "name": "周业正", 
+                            "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                        }
+                    ]
+                }, 
+                {
+                    "name": "办公室", 
+                    "info": "", 
+                    "children": [
+                        {
+                            "name": "部长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "汪帅", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "闻奚越", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "周怡臻"
+                                }, 
+                                {
+                                    "name": "蒋露霞", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    "name": "科宣部", 
+                    "info": "", 
+                    "children": [
+                        {
+                            "name": "部长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "肖俊", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "姚雪宁", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "王玉梅", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    "name": "外联部", 
+                    "info": "", 
+                    "children": [
+                        {
+                            "name": "部长", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "王宇", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "陈朝辉", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "徐帅", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "王梦雪", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }, 
+        {
+            "name": "创新中心", 
+            "info": "", 
+            "children": [
+                {
+                    "name": "主席团", 
+                    "info": "", 
+                    "children": [
+                        {
+                            "name": "吕翩翩", 
+                            "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                        }, 
+                        {
+                            "name": "陆德冰", 
+                            "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                        }
+                    ]
+                }, 
+                {
+                    "name": "科技类直属社团", 
+                    "info": "", 
+                    "children": [
+                        {
+                            "name": "行政助理", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "戴秉汕", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "蒋屹雯", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "苏鹏", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }, 
+                                {
+                                    "name": "祖华婧", 
+                                    "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "CG爱好者协会", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "郑俣"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "苹果爱好者协会", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "张梓雄"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "嵌入式协会", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "李祥"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "安全技术学生研究会", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "程大义"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "漫漫邮子路", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "徐子豪"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "数学建模协会", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "贾淑冰"
+                                }
+                            ]
+                        }, 
+                        {
+                            "name": "ERP协会", 
+                            "info": "", 
+                            "children": [
+                                {
+                                    "name": "赵一荣"
+                                }
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    "name": "SAST工作室", 
+                    "info": "", 
+                    "children": [
+                        {
+                            "name": "钱超", 
+                            "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                        }, 
+                        {
+                            "name": "丁哲昊", 
+                            "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                        }, 
+                        {
+                            "name": "赵培志", 
+                            "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                        }, 
+                        {
+                            "name": "沈天弋", 
+                            "info": "E-mail：fpdsast@126.com 学院：光电学院"
+                        }
+                    ]
+                }, 
+                {
+                    "name": "青年在线工作组", 
+                    "info": ""
+                }
+            ]
+        }
+    ]
+}

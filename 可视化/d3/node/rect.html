@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.node circle {
+  fill: #fff;
+  stroke: red;
+  stroke-width: 1.5px;
+}
+
+.node {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+.chairperson{
+  font: 13px sans-serif bold;
+
+}
+.chairperson circle {
+  fill: #fff;
+  stroke: blue;
+  stroke-width: 2px;
+}
+
+.hover{
+  font: 15px bold;
+  text-shadow: 0px 0px 1px black;
+
+  cursor: pointer;
+
+}
+.selectedlinks{
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+}
+#tips{
+  padding: 0;
+  width:170px;
+  height:100px;
+  position: fixed;
+  border:black thin groove;
+  z-index:999;
+  background-color: white;
+  display: none;
+}
+p{
+  font-size: 13px;
+  text-align: left;
+  margin:5px;
+}
+
+</style>
+<body>
+  <div id="tips">
+    <h5 style="margin: 4px; text-align: center" class="head">详细资料</h5>
+    <p id="contents"></p>
+  </div>
+</body>
+<script src="d3.js"></script>
+<script src="main.js"></script>
+<script src="controls.js"></script>
+
+
+

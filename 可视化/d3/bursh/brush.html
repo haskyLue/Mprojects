@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+svg {
+  font: 10px sans-serif;
+  width: 1100px;
+  height: auto;
+}
+
+.path_1 {
+  fill: steelblue;
+  opacity: .3;
+  
+}
+.path_2{
+  fill:red;
+  opacity: .3;
+  
+ 
+}
+.path_3 {
+  fill: grey;
+  opacity: .3;
+  
+}
+.path_4{
+  fill:green;
+  opacity: .3;
+  
+ 
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+.controls{
+  width: 300px;
+  height: 65px;
+  position: absolute;
+  top: 413px;
+  left: 976px;
+  border: black thin dotted;
+  margin: 3px;
+  padding: 3px;
+}
+select{
+  width: 100px;
+  margin:0;
+}
+button,form{
+  float: left;
+  margin-left: 25px
+}
+.contents{
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 70px;
+  left: 976px;
+  border: black thin dotted;
+  margin: 3px;  
+  text-align: center;
+}
+.text{
+  text-align: left;
+  font-style: italic;
+  margin: 10px;
+  text-shadow: 0px 0px 2px grey;
+}
+
+</style>
+<body>
+<div class="controls">
+  <form>
+  <select name="selection" onchange="switcher()">
+  <option value="1">趋势图—1</option>
+  <option value="2">趋势图—2</option>
+  <option value="3">趋势图—3</option>
+  <option value="4">趋势图—4</option>
+  </select>
+  </form>
+  <button onclick="showall()">恢复所有图形</button>
+</div>
+<div class="contents">
+  <h2 style="margin: 2px; font-weight: 100">Some Details</h2>
+  (暂时仅显示对应path_1趋势图的数据)
+  <div class="text">  </div>
+</div>
+<!-- <script src="jquery-1.9.0.js"></script> -->
+<script src="d3.js"></script>
+<script type="text/javascript" src="controls.js"></script>
+<script src="brush.js"></script>
+
+
+
+
