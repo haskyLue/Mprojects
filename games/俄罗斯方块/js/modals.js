@@ -54,26 +54,26 @@ Basic_squre.prototype.changetype = function() {
 			this.nowStat = this.stat.t3;
 			break;
 	}
-	console.dir(this);
+	
 };//根据当前状态序号，确定下一个要变化的序号
 
-/*继承；构建四种方块模型，并创建自己的变化状态数据库*/
+/*继承；构建四种方块模型，并创建自己的变化状态数据*/
 function Type_0() {
 	Basic_squre.call(this);
 	this.stat = {
 		"t0" : [[this.pos.x, this.pos.y], [this.pos.x, this.pos.y + 1], [this.pos.x, this.pos.y + 2], [this.pos.x, this.pos.y + 3]],
-		"t1" : [[this.pos.x, this.pos.y], [this.pos.x + 1, this.pos.y], [this.pos.x + 2, this.pos.y], [this.pos.x + 3, this.pos.y]],
+		"t1" : [[this.pos.x, this.pos.y+1], [this.pos.x+1 , this.pos.y+1], [this.pos.x +2, this.pos.y+1], [this.pos.x + 3, this.pos.y+1]],
 		"t2" : [[this.pos.x, this.pos.y], [this.pos.x, this.pos.y + 1], [this.pos.x, this.pos.y + 2], [this.pos.x, this.pos.y + 3]],
-		"t3" : [[this.pos.x, this.pos.y], [this.pos.x + 1, this.pos.y], [this.pos.x + 2, this.pos.y], [this.pos.x + 3, this.pos.y]]
+		"t3" : [[this.pos.x, this.pos.y+1], [this.pos.x+1 , this.pos.y+1], [this.pos.x +2, this.pos.y+1], [this.pos.x + 3, this.pos.y+1]]
 	}
 };//方条形狀 4*1
 function Type_1() {
 	Basic_squre.call(this);
 	this.stat = {
-		"t0" : [[this.pos.x, this.pos.y + 1], [this.pos.x + 1, this.pos.y], [this.pos.x + 1, this.pos.y + 1], [this.pos.x + 1, this.pos.y + 2]],
-		"t1" : [[this.pos.x, this.pos.y + 2], [this.pos.x + 1, this.pos.y + 1], [this.pos.x + 1, this.pos.y + 2], [this.pos.x + 2, this.pos.y + 2]],
-		"t2" : [[this.pos.x, this.pos.y], [this.pos.x, this.pos.y + 1], [this.pos.x, this.pos.y + 2], [this.pos.x + 1, this.pos.y + 1]],
-		"t3" : [[this.pos.x, this.pos.y], [this.pos.x + 1, this.pos.y], [this.pos.x + 1, this.pos.y + 1], [this.pos.x + 2, this.pos.y]]
+		"t0" : [[this.pos.x, this.pos.y + 1], [this.pos.x + 1, this.pos.y], [this.pos.x + 1, this.pos.y + 1], [this.pos.x + 2, this.pos.y + 1]],
+		"t1" : [[this.pos.x+1, this.pos.y ], [this.pos.x + 1, this.pos.y + 1], [this.pos.x + 1, this.pos.y + 2], [this.pos.x + 2, this.pos.y + 1]],
+		"t2" : [[this.pos.x, this.pos.y+1], [this.pos.x+1, this.pos.y + 1], [this.pos.x+1, this.pos.y + 2], [this.pos.x + 2, this.pos.y + 1]],
+		"t3" : [[this.pos.x, this.pos.y+1], [this.pos.x + 1, this.pos.y], [this.pos.x + 1, this.pos.y + 1], [this.pos.x + 1, this.pos.y+2]]
 	}
 };//阶梯形状
 function Type_2() {
@@ -89,9 +89,9 @@ function Type_3() {
 	Basic_squre.call(this);
 	this.stat = {
 		"t0" : [[this.pos.x, this.pos.y], [this.pos.x, this.pos.y + 1], [this.pos.x, this.pos.y + 2], [this.pos.x + 1, this.pos.y + 2]],
-		"t1" : [[this.pos.x, this.pos.y + 2], [this.pos.x + 1, this.pos.y + 2], [this.pos.x + 2, this.pos.y + 1], [this.pos.x + 2, this.pos.y + 2]],
+		"t1" : [[this.pos.x, this.pos.y + 1], [this.pos.x+1 , this.pos.y + 1], [this.pos.x +2, this.pos.y ], [this.pos.x + 2, this.pos.y + 1]],
 		"t2" : [[this.pos.x, this.pos.y], [this.pos.x + 1, this.pos.y], [this.pos.x + 1, this.pos.y + 1], [this.pos.x + 1, this.pos.y + 2]],
-		"t3" : [[this.pos.x, this.pos.y], [this.pos.x, this.pos.y + 1], [this.pos.x + 1, this.pos.y], [this.pos.x + 2, this.pos.y]]
+		"t3" : [[this.pos.x-1, this.pos.y+1], [this.pos.x-1, this.pos.y + 2], [this.pos.x , this.pos.y+1], [this.pos.x + 1, this.pos.y+1]]
 	}
 }//L形状
 function Type_4() {

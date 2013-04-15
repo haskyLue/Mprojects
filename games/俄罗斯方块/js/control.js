@@ -2,12 +2,11 @@ var time_1,//定时器，控制方块下落
 	time_2, //定时器，控制方块更新
 	create = CreateModals(),//首次启动时，创建的一个方块模型对象（以后每次直接接受来自create_pre传递的值）
 	create_pre,//下一个可预览的方块模型
-	board = [],//维护当前背景上 除了运动方块以外的 有颜色的区域（行列号构成的二维数组）
+	board = [],//存储当前背景上 除了运动方块以外的有颜色的区域（行列号构成的二维数组）
 	points = 0;//分值，即每次消行时得到的反馈奖励
 function init() {
 	create_pre = CreateModals();
 	colorRender();//渲染当前运动区块的颜色
-	updateboard();//更新除运动区块 有颜色的部分
 	/*以上创建部分完成*/
 	
 	/*绑定按键事件*/
@@ -17,27 +16,33 @@ function init() {
 	
 	/*显示 预览下一个方块 的区域*/
 	showPre(create_pre);
-	
-	/*主启动程序*/
-	if (checkGameOver()) {
-		alert("game over!You score "+points+"points")
-		window.clearTimeout(time_2);//判断是否结束，否则开始或继续
-	} else {
-		time_1 = window.setInterval(function() {	//下落时定时	
-			if (checkdown()) {	//判断是否可以继续下落
-				clears();	//清除运动区块的所有颜色
-				create.movedown();	//所有运动区块下移
-				colorRender();	//重新渲染下移后的运动区块
-				updateboard();	//更新当前有颜色的区块
-			} else {
-				clearInterval(time_1);	//结束下落
-				create = create_pre;	//将预览的下一个对象给当前运动区块
-				time_2 = window.setTimeout(init, 1000)	//重新开始渲染颜色 更新有色区块等操作
-			}
-		}, 1000);
-	}
+
 	/*移除程序开始的点击事件*/
 	removeClick();
+	
+	/*主启动程序*/	
+
+	time_1 = window.setInterval(function() { //下落时定时	
+		if (checkGameOver()) {
+			alert("game over!You score " + points + "points");
+			clearTimeout(time_2);
+			clearInterval(time_1);
+			return;
+		}
+		if (!checkdown()) {
+			clearInterval(time_1);
+			//重新开始渲染颜色 更新有色区块等操作
+			create = create_pre; //将预览的下一个对象给当前运动区块
+			updateboard();
+			time_2 = window.setTimeout(init, 500)
+			return;
+		}
+		clears(); //清除运动区块的所有颜色
+		create.movedown(); //所有运动区块下移
+		colorRender(); //重新渲染下移后的运动区块
+		updateboard(); //更新当前有颜色的区块
+	}, 500)
+	
 }
 
 /*主要功能函数*/
@@ -48,9 +53,12 @@ function random(num) {
 	return Math.floor(Math.random() * num)
 }//生成num以内的随机整数
 function isArrayEqual(array1, array2) {
-	for (var i = 0; i < array1.length; i++) {
-		if (array1[i] != array2[i])
-			return false
+	if(array1.length!==array2.length)
+		return false
+	var len=array1.length;
+	for (var i = 0; i < len; i++) {
+	    if(array1[i]!==array2[i])
+	    	return false
 	}
 	return true
 }//比较两个数组的元素是否一一相等（不能直接比较，否则比较的是数组的地址）
@@ -189,10 +197,19 @@ function checkRotate() {
 	return true;
 }//类似上面
 function checkGameOver() {
-	if (!checkdown() && !checkleft() && checkright() && !checkRotate()) {
-		return true
+	for (var j = 1,heights=18,widths=7,tmp=0; j <= heights; j++) {
+		for (var i = 1; i <= widths; i++) {
+			if (get([j,i])[0].style.backgroundColor != "" ){
+				tmp++;
+				break;
+			}
+		};	
 	}
-}//当无法下移 左移 右移 变化时，即可判断gameover
+	if(tmp===18)
+		return true
+	else return false
+	
+}//当有色区域的高度为容器的高度时，即可判断gameover
 
 
 /*事件函数*/
